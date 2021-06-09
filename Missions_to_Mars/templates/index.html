@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+  <!-- <div class="container-fluid"> -->
+    <section class="showcase">
+
+      <video width=1080 controls muted loop autoplay> 
+        <source src={{ url_for('static', filename="Mars video.mp4") }} type="video/mp4">
+      </video>
+  
+      <div class="overlay">  </div>
+
+      <div class="text">
+        <h2>Mission to Mars</h2>
+        <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+      </div>
+
+
+    </section>
+
+    <div class="container">
+      <div class="row">
+        <div class="article" style="margin-bottom:3em;"> 
+          <div class="row">
+            <h1>Latest Mars News</h1>
+
+            <p><a class="btn btn-primary btn-lg ml-3" href="/new" role="button">New Article</a></p>
+          </div>
+          
+          <hr>
+          <h2><strong>{{ mars.title }}</strong></h2>
+          <h3>{{ mars.paragraph }}</h3>
+        </div>  
+
+      </div>
+
+      <div class="row">
+        <div class="col-md-7">
+          <h2>Feature Mars Image</h2>
+          <div class="article-image">
+            <img src="{{ mars.image_url }}" class="rounded" alt="Mars image">
+          </div>
+          
+        </div>
+
+          <div class="col-md-5">
+            <h2>Mars - Earth Comparison</h2>
+
+            <table class="table table-dark table-striped table-hover">
+              <thead class="table-dark">
+                <tr style="text-align: left;">
+                  <th>Description</th>
+                  <th>Mars</th>
+                  <th>Earth</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>Diameter:</th>
+                  <td>6,779 km</td>
+                  <td>12,742 km</td>
+                </tr>
+                <tr>
+                  <th>Mass:</th>
+                  <td>6.39 × 10^23 kg</td>
+                  <td>5.97 × 10^24 kg</td>
+                </tr>
+                <tr>
+                  <th>Moons:</th>
+                  <td>2</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <th>Distance from Sun:</th>
+                  <td>227,943,824 km</td>
+                  <td>149,598,262 km</td>
+                </tr>
+                <tr>
+                  <th>Length of Year:</th>
+                  <td>687 Earth days</td>
+                  <td>365.24 days</td>
+                </tr>
+                <tr>
+                  <th>Temperature:</th>
+                  <td>-87 to -5 °C</td>
+                  <td>-88 to 58°C</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="row mt-5">
+          <h2 style="text-align: center;">Mars Hemispheres</h2>
+        </div>
+
+        <hr>
+
+        <div class="row mt-3">
+          <!-- <div class="hemispheres"> -->
+            <div class="card col-lg-3 col-xs-12 p-0 m-1" style="width: 18rem;">
+              <img src="https://marshemispheres.com/images/full.jpg" class="card-img-top" alt="Cerberus">
+              <div class="card-body">
+                <p class="card-text">Cerberus Hemisphere</p>
+              </div>
+            </div>
+            <div class="card col-lg-3 col-xs-12 p-0 m-1" style="width: 18rem;">
+              <img src="https://marshemispheres.com/images/schiaparelli_enhanced-full.jpg" class="card-img-top" alt="Cerberus">
+              <div class="card-body">
+                <p class="card-text">Schiaparelli Hemisphere</p>
+              </div>
+            </div>
+            <div class="card col-lg-3 col-xs-12 p-0 m-1" style="width: 18rem;">
+              <img src="https://marshemispheres.com/images/syrtis_major_enhanced-full.jpg" class="card-img-top" alt="Cerberus">
+              <div class="card-body">
+                <p class="card-text">Syrtis Major Hemisphere</p>
+              </div>
+            </div>
+            <div class="card col-lg-3 col-xs-12 p-0 m-1" style="width: 18rem;">
+              <img src="https://marshemispheres.com/images/valles_marineris_enhanced-full.jpg" class="card-img-top" alt="Cerberus">
+              <div class="card-body">
+                <p class="card-text">Valles Marineris Hemisphere</p>
+              </div>
+            </div>
+
+          <!-- </div> -->
+        </div>
+
+      
+
+
+
+
+    
+
+
+    
+    <footer style="margin-top: 5em;">
+      <hr>
+      <p>Mars Planet Science, Exploring Program (2021). Retrieved from https://redplanetscience.com</p>
+    </footer>
+  </div> <!--Container div-->
+</body>
+
+</html>
