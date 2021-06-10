@@ -23,6 +23,10 @@
 
       <div class="text">
         <h2>Mission to Mars</h2>
+        <p class="subtext">This web application scrapes various websites for data related to the Mission 
+          to Mars and displays the information in a single HTML.</p>
+        <p class="cool"><strong>How cool right?</strong></p>
+          
         <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
       </div>
 
@@ -47,17 +51,15 @@
 
       <div class="row">
         <div class="col-md-7">
-          <h2>Feature Mars Image</h2>
+          <h2 style="font-weight: 700; font-size: 2em;">Feature Mars Image</h2>
           <div class="article-image">
             <img src="{{ mars.image_url }}" class="rounded" alt="Mars image">
           </div>
-          
         </div>
 
-          <div class="col-md-5">
-            <h2>Mars - Earth Comparison</h2>
-
-            <table class="table table-dark table-striped table-hover">
+        <div class="col-md-5">
+          <h2 style="font-weight: 700; font-size: 2em;">Mars - Earth Comparison</h2>
+          <table class="table table-dark table-striped table-hover">
               <thead class="table-dark">
                 <tr style="text-align: left;">
                   <th>Description</th>
@@ -97,45 +99,56 @@
                   <td>-88 to 58°C</td>
                 </tr>
               </tbody>
-            </table>
-          </div>
+          </table>
         </div>
+      </div>
 
-        <div class="row mt-5">
-          <h2 style="text-align: center;">Mars Hemispheres</h2>
-        </div>
+      <div>
+        <br>
+      </div>
 
-        <hr>
 
-        <div class="row mt-3">
-          <!-- <div class="hemispheres"> -->
-            <div class="card col-lg-3 col-xs-12 p-0 m-1" style="width: 18rem;">
+      <div class="row mt-5">
+          <h2 style="text-align: center; font-weight: 700; font-size: 3em;">Mars Hemispheres</h2>
+      </div>
+
+      <hr>
+
+      <div class="row mt-3 hemispheres">
+          <div class="col-lg-3 px-2">
+            <div class="card">
               <img src="https://marshemispheres.com/images/full.jpg" class="card-img-top" alt="Cerberus">
               <div class="card-body">
                 <p class="card-text">Cerberus Hemisphere</p>
               </div>
             </div>
-            <div class="card col-lg-3 col-xs-12 p-0 m-1" style="width: 18rem;">
+          </div>
+          <div class="col-lg-3 px-2">
+            <div class="card">
               <img src="https://marshemispheres.com/images/schiaparelli_enhanced-full.jpg" class="card-img-top" alt="Cerberus">
               <div class="card-body">
                 <p class="card-text">Schiaparelli Hemisphere</p>
               </div>
             </div>
-            <div class="card col-lg-3 col-xs-12 p-0 m-1" style="width: 18rem;">
+          </div>
+          <div class="col-lg-3 px-2">
+            <div class="card">
               <img src="https://marshemispheres.com/images/syrtis_major_enhanced-full.jpg" class="card-img-top" alt="Cerberus">
               <div class="card-body">
                 <p class="card-text">Syrtis Major Hemisphere</p>
               </div>
             </div>
-            <div class="card col-lg-3 col-xs-12 p-0 m-1" style="width: 18rem;">
+          </div>
+          <div class="col-lg-3 px-2">
+            <div class="card">
               <img src="https://marshemispheres.com/images/valles_marineris_enhanced-full.jpg" class="card-img-top" alt="Cerberus">
               <div class="card-body">
                 <p class="card-text">Valles Marineris Hemisphere</p>
               </div>
             </div>
-
-          <!-- </div> -->
-        </div>
+          </div>   
+      </div>
+   
 
       
 
@@ -148,7 +161,7 @@
     
     <footer style="margin-top: 5em;">
       <hr>
-      <p>Mars Planet Science, Exploring Program (2021). Retrieved from https://redplanetscience.com</p>
+      <p>Mars Planet Science, Exploring Program (2021). Retrieved from https://www.redplanetscience.com</p>
     </footer>
   </div> <!--Container div-->
 </body>

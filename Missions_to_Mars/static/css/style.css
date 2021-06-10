@@ -15,15 +15,17 @@
 .article-image img{
     border-image: 8px;
     width: 70%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.8);
 }
 
-.hemispheres{
-    display: flex;
+.table{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.8);
 }
+
 
 .hemispheres p{
-    padding: 2;
+    padding: 0;
+    font-weight: 600;
 }
 
 .showcase{
@@ -56,6 +58,11 @@
     mix-blend-mode: overlay;
 }
 
+.text{
+    position: relative;
+    z-index: 10;
+}
+
 .text h2{
     font-size: 5em;
     font-weight:700;
@@ -63,8 +70,12 @@
     text-transform: uppercase;
 }
 
-.text{
-    position: relative;
-    z-index: 10;
+.subtext{
+    max-width:800px;
+    font-size:1.5rem;
+}
+
+.cool{
+    font-size: 2rem;
 }
 
