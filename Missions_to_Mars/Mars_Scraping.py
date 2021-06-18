@@ -12,69 +12,70 @@ def scrape_mars():
     executable_path = {'executable_path': ChromeDriverManager().install()}
     browser = Browser('chrome', **executable_path, headless=False)
 
-    # Visit visitcostarica.herokuapp.com
     url = "https://redplanetscience.com/"
     browser.visit(url)
 
-    # time.sleep(1)
-    conn = 'mongodb://localhost:27017'
-    client = pymongo.MongoClient(conn)
-    db = client.Nasa
-    collection = db.mars_data
+    client = pymongo.MongoClient('mongodb://localhost:27017')
+    client.Nasa.mars_data.drop()
 
-    collection.drop()
-
-    # Scrape page into Soup
+    #Get Mars News and Image  
     html = browser.html
     soup = bs(html, "html.parser")
 
     articles=soup.find_all("div",class_="col-md-12")[1:]
-
     for article in articles:
-
         try:
             news_title=article.find("div",class_="content_title").text
             news_p=article.find("div",class_="article_teaser_body").text
             featured_image_url=article.find("img")['src']
-
-            print('-----------------')
-            print(news_title)
-            print(news_p)
-            print(featured_image_url)
-
 
             data={
                 "title":news_title,
                 "paragraph":news_p,
                 "image_url":featured_image_url
             }
-
-            # scraped_data.append(data)
-            collection.insert_one(data)
-                            
-
+            client.Nasa.mars_data.insert_one(data)                     
         except Exception as e:
             print(e)
+   
 
-        # print(scraped_data)
+    #Get Mars Facts Table 
+    tables = pd.read_html('https://galaxyfacts-mars.com/')
+    df = tables[0]
+    df.columns = df.iloc[0]
+    comparison = df[1:]
+    comparison.set_index('Mars - Earth Comparison')
+    html_table = comparison.to_html()
+    html_table.replace('\n', '')
 
+    #Get Mars Hemispheres
+    browser.visit('https://marshemispheres.com/')
+    html = browser.html
+    soup = bs(html, 'html.parser')
+
+    names = soup.find_all('div', class_='item')
+
+    hemisphere = []
+
+    for x in names: 
+        itemtitle = x.find('div', class_='description').find('a').find('h3').text
+        baseurl = x.find('a')['href']
+        image_url = 'https://marshemispheres.com/' + baseurl
+        browser.visit(image_url)
+        html = browser.html
+        soup = bs(html, 'html.parser')
+        image = soup.find('div', class_='downloads').find('ul').find('li').find('a')['href']
+        final_image = 'https://marshemispheres.com/' + image
+        hemisphere.append({'title':itemtitle, 'img_url':final_image})
+        
     browser.quit()
-    return ("Data Updated!")
+    
+    mars_data = {
+        'mars_facts': html_table,
+        'hemisphere_images': hemisphere
+    }
+    
+    client.Nasa.planet_data.drop()
+    client.Nasa.planet_data.insert_one(mars_data)
 
-
-
-# ## Mars Facts
-
-mars_facts_url="https://galaxyfacts-mars.com/"
-mars_facts=pd.read_html(mars_facts_url)[1]
-mars_facts=mars_facts.rename(columns = {0:"Variable",1:"Value"})
-mars_facts.to_html("Mars_facts.html")
-
-
-hemisphere_image_urls = [
-    {"title": "Valles Marineris Hemisphere", "img_url": "https://marshemispheres.com/images/valles_marineris_enhanced-full.jpg"},
-    {"title": "Cerberus Hemisphere", "img_url": "https://marshemispheres.com/images/full.jpg"},
-    {"title": "Schiaparelli Hemisphere", "img_url": "https://marshemispheres.com/images/schiaparelli_enhanced-full.jpg"},
-    {"title": "Syrtis Major Hemisphere", "img_url": "https://marshemispheres.com/images/syrtis_major_enhanced-full.jpg"},
-]
-
+    return mars_data

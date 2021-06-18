@@ -16,30 +16,26 @@ def index():
 
     # Find one record of data from the mongo database
     mars = mongo.db.mars_data.find_one()
+    planet = mongo.db.planet_data.find_one()
 
     # Return template and data
-    return render_template("index.html", mars=mars)
+    return render_template("index.html", mars=mars,planet=planet)
 
 @app.route("/new")
 def new():
-    # mars = mongo.db.mars_data.aggregate([{ $sample: { size: 1 } }])
     RandomNumber = randint(0, 15)
     mars = mongo.db.mars_data.find().limit(-1).skip(RandomNumber).next()
+    planet = mongo.db.planet_data.find_one()
     
-    return render_template("index.html", mars=mars)
+    return render_template("index.html", mars=mars,planet=planet)
 
 
-# Route that will trigger the scrape functiona
+# Route that will trigger the scrape function
 @app.route("/scrape")
 def scrape():
 
-    # Run the scrape function
-    mars_data = Mars_Scraping.scrape_mars()
+    Mars_Scraping.scrape_mars()
 
-    # Update the Mongo database using update and upsert=True
-    # mongo.db.mars.update({}, mars_data, upsert=True)
-
-    # Redirect back to home page
     return redirect("/")
 
 

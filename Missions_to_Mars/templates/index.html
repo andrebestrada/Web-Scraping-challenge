@@ -60,7 +60,7 @@
 
         <div class="col-md-5">
           <h2 style="font-weight: 700; font-size: 2em;">Mars - Earth Comparison</h2>
-          <table class="table table-dark table-striped table-hover">
+          <!-- <table class="table table-dark table-striped table-hover">
               <thead class="table-dark">
                 <tr style="text-align: left;">
                   <th>Description</th>
@@ -100,7 +100,10 @@
                   <td>-88 to 58°C</td>
                 </tr>
               </tbody>
-          </table>
+          </table> -->
+          <span class='w-100 p-3 text-center'>
+            {{planet.mars_facts | safe}}
+          </span>
         </div>
       </div>
 
@@ -118,33 +121,33 @@
       <div class="row mt-3 hemispheres">
           <div class="col-lg-3 px-2">
             <div class="card">
-              <img src="https://marshemispheres.com/images/full.jpg" class="card-img-top" alt="Cerberus">
+              <img src= "{{planet.hemisphere_images.0.img_url}}" class="card-img-top" alt="Cerberus">
               <div class="card-body">
-                <p class="card-text">Cerberus Hemisphere</p>
+                <p class="card-text">{{planet.hemisphere_images.0.title}}</p>
               </div>
             </div>
           </div>
           <div class="col-lg-3 px-2">
             <div class="card">
-              <img src="https://marshemispheres.com/images/schiaparelli_enhanced-full.jpg" class="card-img-top" alt="Cerberus">
+              <img src="{{planet.hemisphere_images.1.img_url}}" class="card-img-top" alt="Cerberus">
               <div class="card-body">
-                <p class="card-text">Schiaparelli Hemisphere</p>
+                <p class="card-text">{{planet.hemisphere_images.1.title}}</p>
               </div>
             </div>
           </div>
           <div class="col-lg-3 px-2">
             <div class="card">
-              <img src="https://marshemispheres.com/images/syrtis_major_enhanced-full.jpg" class="card-img-top" alt="Cerberus">
+              <img src="{{planet.hemisphere_images.2.img_url}}" class="card-img-top" alt="Cerberus">
               <div class="card-body">
-                <p class="card-text">Syrtis Major Hemisphere</p>
+                <p class="card-text">{{planet.hemisphere_images.2.title}}</p>
               </div>
             </div>
           </div>
           <div class="col-lg-3 px-2">
             <div class="card">
-              <img src="https://marshemispheres.com/images/valles_marineris_enhanced-full.jpg" class="card-img-top" alt="Cerberus">
+              <img src="{{planet.hemisphere_images.3.img_url}}" class="card-img-top" alt="Cerberus">
               <div class="card-body">
-                <p class="card-text">Valles Marineris Hemisphere</p>
+                <p class="card-text">{{planet.hemisphere_images.3.title}}</p>
               </div>
             </div>
           </div>   
